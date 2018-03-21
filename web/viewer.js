@@ -16,15 +16,14 @@
 
 'use strict';
 
-let DEFAULT_URL = 'compressed.tracemonkey-pldi-09.pdf';
+let DEFAULT_URL =  window.location.search.slice(5)
 
 if (typeof PDFJSDev !== 'undefined' && PDFJSDev.test('CHROME')) {
   (function rewriteUrlClosure() {
     // Run this code outside DOMContentLoaded to make sure that the URL
     // is rewritten as soon as possible.
-    let queryString = document.location.search.slice(1);
-    let m = /(^|&)file=([^&]*)/.exec(queryString);
-    DEFAULT_URL = m ? decodeURIComponent(m[2]) : '';
+    // let queryString = document.location.search.slice(1);
+    // let m = /(^|&)url=([^&]*)/.exec(queryString);
 
     // Example: chrome-extension://.../http://example.com/file.pdf
     let humanReadableUrl = '/' + DEFAULT_URL + location.hash;

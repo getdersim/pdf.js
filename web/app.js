@@ -46,6 +46,7 @@ import { SecondaryToolbar } from './secondary_toolbar';
 import { Toolbar } from './toolbar';
 import { ViewHistory } from './view_history';
 
+console.log('%c 2018 DERS.IM ', 'background: #222; color: #bada55');
 const DEFAULT_SCALE_DELTA = 1.1;
 const DISABLE_AUTO_FETCH_LOADING_BAR_TIMEOUT = 5000;
 
@@ -62,6 +63,7 @@ function configure(PDFJS) {
     PDFJS.cMapUrl = '../web/cmaps/';
   }
   PDFJS.cMapPacked = true;
+  PDFJS.locale = 'tr';
 }
 
 const DefaultExternalServices = {
@@ -1497,9 +1499,9 @@ if (typeof PDFJSDev === 'undefined' || PDFJSDev.test('GENERIC')) {
       // Removing of the following line will not guarantee that the viewer will
       // start accepting URLs from foreign origin -- CORS headers on the remote
       // server must be properly configured.
-      if (fileOrigin !== viewerOrigin) {
-        throw new Error('file origin does not match viewer\'s');
-      }
+      // if (fileOrigin !== viewerOrigin) {
+      //   throw new Error('file origin does not match viewer\'s');
+      // }
     } catch (ex) {
       let message = ex && ex.message;
       PDFViewerApplication.l10n.get('loading_error', null,
